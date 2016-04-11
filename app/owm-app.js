@@ -27,9 +27,6 @@
 	        	.otherwise('/error');
 		}])
 		.run(function($rootScope, $location, $timeout) {
-			$rootScope.$on('$routeChangeError', function() {
-				$location.path('/error');
-			});
 		    $rootScope.$on('$routeChangeError', function() {
 		        $location.path("/error");
 		    });
