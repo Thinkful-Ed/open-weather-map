@@ -5,11 +5,13 @@
 	        $routeProvider
 	        	.when('/', {
 	            	templateUrl : 'home.html',
-	            	controller : 'HomeCtrl'
+	            	controller : 'HomeCtrl',
+	            	controllerAs: 'vm'
 	        	})
 	        	.when('/cities/:city', {
 	            	templateUrl : 'city.html',
 	            	controller : 'CityCtrl',
+	            	controllerAs: 'vm',
 			    	resolve : {
 			        	city: function(owmCities, $route, $location) {
 			            	var city = $route.current.params.city;
@@ -40,11 +42,12 @@
 		    });
 		})
     	.value('owmCities', ['New York', 'Dallas', 'Chicago'])
-	    .controller('HomeCtrl', function($scope) {
+	    .controller('HomeCtrl', function() {
 	        //empty for now
 	    })
-	    .controller('CityCtrl', function($scope, $routeParams, city) {
-    		$scope.city = city;
+	    .controller('CityCtrl', function($routeParams, city) {
+    		var vm = this;
+    		vm.city = city;
 	    });
 
 }());
